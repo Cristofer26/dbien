@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'App1/css/style.css' %}">
+    <title>{% block title %}Hotel Duerme Bien{% endblock %}</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{% url 'Home' %}">Hotel Duerme Bien</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    {% if user.is_authenticated %}
+                   
+                    {% if es_empleado %}
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{% url 'HabList' %}">Ver Habitaciones</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{% url 'ResForm' %}">Crear Reservación</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{% url 'ServList' %}">Alojamiento
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Soporte Técnico</a>
+                    </li>
+                    {% if es_administrador %}
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{% url 'EmpForm' %}">Crear Nuevo Encargado</a>
+                    </li>
+                    {% endif %}
+                    {% endif %}
+                    {% if es_pasajero or es_empleado %}
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{% url 'ResList' %}">Ver Reservas Activas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{% url 'ResList' %}">Ver Historial Reservas</a>
+                    </li>
+                    {% endif %}
+                    {% endif %}
+                </ul>
+                <div class="d-flex" role="search">
+                    {% if es_encargado%}
+                    <a class="nav-link active me-3" href="/ruta-empleado">Perfil Encargado</a>
+                    {% endif %}
+                    {% if es_administrador %}
+                    <a class="nav-link active me-3" href="/ruta-empleado">Perfil Administrador</a>
+                    {% endif %}
+                    {% if es_pasajero %}
+                    <a class="nav-link active me-3" href="/ruta-pasajero">Perfil Pasajero</a>
+                    {% endif %}
+                    {% if request.user.is_authenticated %}
+                    <form method="post" action="{% url 'logout' %}">
+                        {% csrf_token %}
+                        <button type="submit" class="nav-link me-2"
+                            style="border: none; background-color: transparent;">
+                            <i class="bi bi-box-arrow-right"></i> Logout
+                        </button>
+                    </form>
+                    {% else %}
+                    {% block login_button %}
+                    <a class="nav-link me-2" href="{% url 'login' %}"><i class="bi bi-box-arrow-in-right"></i>Login</a>
+                    {% endblock %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </nav>
+    {% block content %}
+    {% endblock %}
+    <div class="container mt-4 text-center">
+        <div class="row">
+            <div class="col">
+                <img src="{% static 'App1/img/logo.png' %}" alt="Logo del Hotel" class="img-fluid">
+            </div>
+        </div>
+    </div>
+
+    <div class="container ">
+        <div class="row justify-content-center">
+            <div class="col-md-8 text-center">
+                <p> &copy; Hotel Duerme Bien 2023. Todos los derechos reservados. </p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,55 @@
+{% extends 'App1/base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <h1 class="text-center mb-4">Reservas</h1>
+
+    {% if reservas %}
+    <div id="content">
+        <h2>Listado de Reservas</h2>
+        <div class="row">
+            <div class="col-lg-4 mb-3">
+                <div class="input-group">
+                    <input type="text" class="form-control" id="searchInput" placeholder="Buscar">
+                    <button class="btn btn-primary" type="button">
+                        <i class="bi bi-search"></i>
+                    </button>
+                </div>
+                <a href="{% url 'ResForm' %}" class="btn btn-success">
+                    <i class="bi bi-plus"></i>
+                </a>
+            </div>
+            <div class="col-lg-6">
+
+            </div>
+        </div>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Número de habitación</th>
+                    <th>Fecha a Reservar</th>
+                    <th>Cant. días</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for r in reservas %}
+                <tr>
+                    <td>{{ r.habitacion }}</td>
+                    <td>{{ r.fecha_reserva }}</td>
+                    <td>{{ r.cantidad_dias }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        {% else %}
+
+        <h3>No existen Reservas</h3>
+
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}

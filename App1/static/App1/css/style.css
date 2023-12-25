@@ -1,0 +1,19 @@
+/* Cambiar el color del texto del título/logo del navbar */
+.navbar-brand {
+    color: white !important;
+}
+
+/* Cambiar el color del texto de los elementos del menú del navbar */
+.nav-link {
+    color: white !important;
+}
+
+/* Cambiar el color del texto de los botones o elementos adicionales si es necesario */
+.navbar-toggler {
+    color: white !important;
+}
+
+/* Si tienes más elementos en tu navbar, añade reglas similares para ellos */
+body {
+    background-image: linear-gradient(90deg, #f3f3f3, rgb(227, 209, 186)) ;
+}

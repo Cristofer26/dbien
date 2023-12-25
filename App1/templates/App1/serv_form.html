@@ -1,0 +1,14 @@
+{% extends 'App1/base.html' %}
+
+{% block content %}
+
+<h2>Crear servicio</h2>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}   
+    <button class="btn btn-success">Save</button>
+    <a class="btn btn-dark" href="{% url 'ResList' %}">Back to home</a>    
+</form>
+
+{% endblock %}

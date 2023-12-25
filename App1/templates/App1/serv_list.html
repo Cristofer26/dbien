@@ -1,0 +1,55 @@
+{% extends 'App1/base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <h1 class="text-center mb-4">Servicios</h1>
+
+    {% if servicios %}
+    <div id="content">
+        <h2>Listado de servicios</h2>
+        <div class="d-flex justify-content-end align-items-center mb-3">
+            <a href="{% url 'ServForm' %}" class="btn btn-success me-3">
+                <i class="bi bi-plus">Crear</i>
+            </a>
+            <div class="input-group" style="width: 250px;"> 
+                <input type="text" class="form-control" id="searchInput" placeholder="Buscar">
+                <button class="btn btn-primary" type="button">
+                    <i class="bi bi-search"></i>
+                </button>
+            </div>
+        </div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Responsable</th>
+                    <th>CheckIn</th>
+                    <th>CheckOut</th>
+                    <th>Estado</th>
+                    <th>Total</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for s in servicios %}
+                <tr>
+                    <td>{{ s.responsable }}</td>
+                    <td>{{ s.checkin }}</td>
+                    <td>{{ s.checkout }}</td>
+                    <td>{{ s.estado }}</td>
+                    <td>{{ s.total }}</td>
+                    <td></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    {% else %}
+
+    <h3>No existen Servicios</h3>
+
+    {% endif %}
+    </div>
+</div>
+
+{% endblock %}

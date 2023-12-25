@@ -1,0 +1,92 @@
+{% extends 'App1/base.html' %}
+
+{% block title %}Hotel Duerme Bien - Pasajero{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8 text-center">
+            <h1 class="display-4">{% block welcome_message %}Bienvenido {{ user.first_name }} {% endblock %}</h1>
+            <h2 class="display-7">{% block sub_message %}Por favor elija una opción{% endblock %}</h2>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <h2 id="bienvenidoMensaje" class="text-center"></h2>
+    <div id="content">
+        <div class="row">
+            {% if es_administrador %}
+            <div class="col-md-3 mb-4">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">Encargados</h5>
+                        <p class="card-text">Gestión de encargados del hotel.</p>
+                        <a href="{% url 'EmpList' %}" class="btn btn-primary">Ver Encargados</a>
+                    </div>
+                    <div class="card-footer">
+                        <a href="{% url 'EmpForm' %}" class="btn btn-success">Agregar Encargado</a>
+                        <a href="#" class="btn btn-danger">Eliminar Encargado</a>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+            {% if es_empleado %}
+            <div class="col-md-3 mb-4">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">Habitaciones</h5>
+                        <p class="card-text">Gestión de habitaciones del hotel.</p>
+                        <a href="{% url 'HabList' %}" class="btn btn-primary">Ver Habitaciones</a>
+                    </div>
+                    <div class="card-footer">
+                        <a href="{% url 'HabForm' %}" class="btn btn-success">Agregar Habitación</a>
+                        <a href="#" class="btn btn-danger">Eliminar Habitación</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-4">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">Pasajeros</h5>
+                        <p class="card-text">Gestión de pasajeros del hotel.</p>
+                        <a href="{% url 'PasList' %}" class="btn btn-primary">Ver Pasajeros</a>
+                    </div>
+                    <div class="card-footer">
+                        <a href="{% url 'PasForm' %}" class="btn btn-success">Agregar Pasajero</a>
+                        <a href="#" class="btn btn-danger">Eliminar Pasajero</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-4">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">Alojamiento</h5>
+                        <p class="card-text">Gestión de Alojamientos del hotel</p>
+                        <a href="{% url 'ServList' %}" class="btn btn-primary">Ver Alojamientos</a>
+                    </div>
+                    <div class="card-footer">
+                        <a href="{% url 'ServForm' %}" class="btn btn-success">Iniciar Alojamiento</a>
+                        <a href="#" class="btn btn-danger">Finalizar Alojamiento</a>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+            {% if es_empleado or es_pasajero %}
+            <div class="col-md-3 mb-4">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">Reservas</h5>
+                        <p class="card-text">Gestión de reservas del hotel.</p>
+                        <a href="{% url 'ResList' %}" class="btn btn-primary">Ver Reservas</a>
+                    </div>
+                    <div class="card-footer">
+                        <a href="{% url 'ResForm' %}" class="btn btn-success">Agregar Reserva</a>
+                        <a href="#" class="btn btn-danger">Eliminar Reserva</a>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
