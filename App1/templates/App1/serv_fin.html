@@ -1,0 +1,22 @@
+{% extends 'App1/base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Finalizar Servicio</h2>
+    <p>¿Estás seguro de que quieres finalizar el servicio para el responsable {{ object.es_responsable }}?</p>
+
+    <form action="" method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <!-- Puedes agregar detalles adicionales si lo deseas -->
+            <p>Check-in: {{ object.checkIn }}</p>
+            <p>{% for numero_habitacion in habitaciones %}
+                Habitación: {{ numero_habitacion }}<br>
+            {% endfor %}</p>
+            <!-- Asegúrate de que estos campos coincidan con los atributos de tu modelo Servicio -->
+        </div>
+        <button type="submit" class="btn btn-danger">Confirmar Finalización</button>
+        <a href="{% url 'Home' %}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+{% endblock %}

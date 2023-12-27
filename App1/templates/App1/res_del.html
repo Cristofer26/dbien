@@ -1,0 +1,16 @@
+{% extends 'App1/base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center align-items-center">
+        <h2>Eliminar</h2>
+
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <p>¿Desea anular la reserva?</p>
+            <button class="btn btn-danger" type="submit">Eliminar</button>
+            <a class="btn btn-dark" href="{% url 'ResList' %}">Regresar</a>
+        </form>
+    </div>
+</div>
+{% endblock %}

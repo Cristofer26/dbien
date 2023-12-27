@@ -78,8 +78,12 @@ WSGI_APPLICATION = 'Hotel.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'dbien',
+        'USER': 'admin',
+        'PASSWORD': 'duermebien',
+        'HOST': 'database-dmhotel.ckkh5wew08gi.us-east-1.rds.amazonaws.com',
+        'PORT': '3306',
     }
 }
 
