@@ -1,14 +1,22 @@
 {% extends 'App1/base.html' %}
 
 {% block content %}
+<div class="container">
+    <div class="row justify-content-center align-items-center" style="min-height: 60vh;">
+        <div class="col-6">
+            <h2>Agregar Habitación</h2>
 
-<h2>Agregar Habitación</h2>
-
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}   
-    <button class="btn btn-success">Save</button>
-    <a class="btn btn-dark" href="{% url 'HabList' %}">Back to home</a>    
-</form>
+            <form method="post">
+    
+            
+                {% csrf_token %}
+                {{ form.as_p }}   
+                <button class="btn btn-success">Save</button>
+                    <a class="btn btn-dark" href="{% url 'HabList' %}">Back to home</a>    
+            </form>
+        </div>    
+    </div>
+</div>           
+        </form>
 
 {% endblock %}

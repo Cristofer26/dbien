@@ -32,14 +32,14 @@
                         <a class="nav-link active" aria-current="page" href="{% url 'HabList' %}">Ver Habitaciones</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{% url 'ResForm' %}">Crear Reservación</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{% url 'ServList' %}">Alojamiento
+                        <a class="nav-link active" aria-current="page" href="{% url 'ServList' %}">Ver Alojamientos
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Soporte Técnico</a>
+                        <a class="nav-link active" aria-current="page" href="{% url 'ResForm' %}">Crear Reservación</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{% url 'Contacto' %}">Contacto</a>
                     </li>
                     {% if es_administrador %}
                     <li class="nav-item">
@@ -59,13 +59,13 @@
                 </ul>
                 <div class="d-flex" role="search">
                     {% if es_encargado%}
-                    <a class="nav-link active me-3" href="/ruta-empleado">Perfil Encargado</a>
+                    <a class="nav-link active me-3">Perfil Encargado</a>
                     {% endif %}
                     {% if es_administrador %}
-                    <a class="nav-link active me-3" href="/ruta-empleado">Perfil Administrador</a>
+                    <a class="nav-link active me-3">Perfil Administrador</a>
                     {% endif %}
                     {% if es_pasajero %}
-                    <a class="nav-link active me-3" href="/ruta-pasajero">Perfil Pasajero</a>
+                    <a class="nav-link active me-3">Perfil Pasajero</a>
                     {% endif %}
                     {% if request.user.is_authenticated %}
                     <form method="post" action="{% url 'logout' %}">

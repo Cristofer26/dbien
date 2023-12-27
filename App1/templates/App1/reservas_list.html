@@ -10,12 +10,12 @@
         <h2>Listado de Reservas</h2>
         <div class="row">
             <div class="col-lg-4 mb-3">
-                <div class="input-group">
-                    <input type="text" class="form-control" id="searchInput" placeholder="Buscar">
-                    <button class="btn btn-primary" type="button">
+                <form method="get" action="{% url 'ResList' %}" class="input-group" style="width: 250px;">
+                    <input type="text" class="form-control" name="q" id="searchInput" placeholder="Buscar" value="{{ request.GET.q }}">
+                    <button class="btn btn-primary" type="submit">
                         <i class="bi bi-search"></i>
                     </button>
-                </div>
+                </form>
                 <a href="{% url 'ResForm' %}" class="btn btn-success">
                     <i class="bi bi-plus"></i>
                 </a>
@@ -31,6 +31,8 @@
                     <th>Número de habitación</th>
                     <th>Fecha a Reservar</th>
                     <th>Cant. días</th>
+                    <th>Pasajero</th>
+                    <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
@@ -39,6 +41,12 @@
                     <td>{{ r.habitacion }}</td>
                     <td>{{ r.fecha_reserva }}</td>
                     <td>{{ r.cantidad_dias }}</td>
+                    <td>{{ r.pasajero }}</td>
+                    <td>
+                        <div class="d-flex">
+                            <a class="btn btn-danger me-2" href="{% url 'ResDel' r.id %}">Anular</a>
+                        </div>
+                    </td>
                 </tr>
                 {% endfor %}
             </tbody>

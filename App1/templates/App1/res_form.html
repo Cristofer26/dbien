@@ -1,14 +1,33 @@
 {% extends 'App1/base.html' %}
 
 {% block content %}
+<div class="container">
+    <div class="row justify-content-center align-items-center" style="min-height: 60vh;">
+        <h2>Realizar Reserva</h2>
 
-<h2>Realizar Reserva</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="button" id="showPasFormBtn">Crear Nuevo Pasajero</button>
 
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}   
-    <button class="btn btn-success">Save</button>
-    <a class="btn btn-dark" href="{% url 'ResList' %}">Back to home</a>    
-</form>
+            <!-- Formulario de Pasajero, oculto inicialmente -->
+            <div id="pasFormContainer" style="display:none;">
+                <h2>Nuevo Pasajero:</h2>
+                {{ pas_form.as_p }}
+            </div>
+            <button class="btn btn-success">Save</button>
+            <a class="btn btn-dark" href="{% url 'ResList' %}">Back to home</a>    
+        </form>
+        <script>
+            // JavaScript para controlar la visibilidad del formulario de Pasajero
+            document.getElementById("showPasFormBtn").addEventListener("click", function() {
+                var pasForm = document.getElementById("pasFormContainer");
+                pasForm.style.display = pasForm.style.display === "none" ? "block" : "none";
+            });
+        </script>
+
+    </div>
+    
+</div>        
 
 {% endblock %}

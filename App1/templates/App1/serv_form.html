@@ -1,14 +1,59 @@
 {% extends 'App1/base.html' %}
 
 {% block content %}
+{% load static %}
+<script src="{% static 'App1/js/servform.js' %}"></script>
 
-<h2>Crear servicio</h2>
-
-<form method="post">
+<form method="post" enctype="multipart/form-data">
     {% csrf_token %}
-    {{ form.as_p }}   
-    <button class="btn btn-success">Save</button>
-    <a class="btn btn-dark" href="{% url 'ResList' %}">Back to home</a>    
+    {{ form.as_p }}
+
+    <h2>Pasajeros</h2>
+    <div id="primer-pasajero">
+        <h3>Pasajero Responsable</h3>
+        {% with pasajero_formset.forms.0 as primer_pasajero_form %}
+        <table>
+            <tr>
+                {% for field in primer_pasajero_form.visible_fields %}
+                <th>{% if field.name == 'first_name' %}Nombre {% elif field.name == 'last_name' %}Apellido
+                    {% else %}{{ field.label }}{% endif %} </th>
+                {% endfor %}
+            </tr>
+            <tr class="pasajero-form">
+                {% for field in primer_pasajero_form.visible_fields %}
+                <td>{{ field }}</td>
+                {% endfor %}
+            </tr>
+        </table>
+        {% endwith %}
+    </div>
+
+    <!-- Manejar los formularios restantes de pasajeros -->
+    <div id="otros-pasajeros">
+        <h4>Otros Pasajeros</h4>
+        <table id="pasajero-forms-container">
+   
+            {{ pasajero_formset.management_form }}
+            {% for form in pasajero_formset %}
+            {% if not forloop.first %}
+            <tr class="pasajero-form">
+                {% for field in form.visible_fields %}
+                <td>{{ field }}</td>
+                {% endfor %}
+            </tr>
+            {% endif %}
+            {% endfor %}
+        </table>
+    </div>
+
+    <button type="button" class ="btn btn-success" id="add-more">Agregar otro pasajero</button>
+
+    <h2>Registros de Alojamiento</h2>
+    <table>
+        {{ registro_formset.as_table }}
+    </table>
+
+    <input type="submit" class ="btn btn-success" value="Guardar">
 </form>
 
 {% endblock %}

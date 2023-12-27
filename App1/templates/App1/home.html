@@ -21,12 +21,10 @@
                     <div class="card-body">
                         <h5 class="card-title">Encargados</h5>
                         <p class="card-text">Gestión de encargados del hotel.</p>
-                        <a href="{% url 'EmpList' %}" class="btn btn-primary">Ver Encargados</a>
+                        <a href="{% url 'EmpList' %}" class="btn btn-primary mb-2">Ver Encargados</a>
+                        <a href="{% url 'EmpForm' %}" class="btn btn-success">Crear Encargados</a>
                     </div>
-                    <div class="card-footer">
-                        <a href="{% url 'EmpForm' %}" class="btn btn-success">Agregar Encargado</a>
-                        <a href="#" class="btn btn-danger">Eliminar Encargado</a>
-                    </div>
+                    
                 </div>
             </div>
             {% endif %}
@@ -36,11 +34,8 @@
                     <div class="card-body">
                         <h5 class="card-title">Habitaciones</h5>
                         <p class="card-text">Gestión de habitaciones del hotel.</p>
-                        <a href="{% url 'HabList' %}" class="btn btn-primary">Ver Habitaciones</a>
-                    </div>
-                    <div class="card-footer">
-                        <a href="{% url 'HabForm' %}" class="btn btn-success">Agregar Habitación</a>
-                        <a href="#" class="btn btn-danger">Eliminar Habitación</a>
+                        <a href="{% url 'HabList' %}" class="btn btn-primary mb-2">Ver Habitaciones</a>
+                        <a href="{% url 'HabForm' %}" class="btn btn-success">Crear Habitaciones</a>
                     </div>
                 </div>
             </div>
@@ -49,11 +44,9 @@
                     <div class="card-body">
                         <h5 class="card-title">Pasajeros</h5>
                         <p class="card-text">Gestión de pasajeros del hotel.</p>
-                        <a href="{% url 'PasList' %}" class="btn btn-primary">Ver Pasajeros</a>
-                    </div>
-                    <div class="card-footer">
-                        <a href="{% url 'PasForm' %}" class="btn btn-success">Agregar Pasajero</a>
-                        <a href="#" class="btn btn-danger">Eliminar Pasajero</a>
+                        <a href="{% url 'PasList' %}" class="btn btn-primary mb-2">Ver Pasajeros</a>
+                        <a href="{% url 'PasForm' %}" class="btn btn-success">Crear Habitaciones</a>
+
                     </div>
                 </div>
             </div>
@@ -62,11 +55,9 @@
                     <div class="card-body">
                         <h5 class="card-title">Alojamiento</h5>
                         <p class="card-text">Gestión de Alojamientos del hotel</p>
-                        <a href="{% url 'ServList' %}" class="btn btn-primary">Ver Alojamientos</a>
-                    </div>
-                    <div class="card-footer">
-                        <a href="{% url 'ServForm' %}" class="btn btn-success">Iniciar Alojamiento</a>
-                        <a href="#" class="btn btn-danger">Finalizar Alojamiento</a>
+                        <a href="{% url 'ServList' %}" class="btn btn-primary mb-2">Ver Alojamientos</a>
+                        <a href="{% url 'ServForm' %}" class="btn btn-success mb-2">Crear Alojamientos</a>
+
                     </div>
                 </div>
             </div>
@@ -77,11 +68,8 @@
                     <div class="card-body">
                         <h5 class="card-title">Reservas</h5>
                         <p class="card-text">Gestión de reservas del hotel.</p>
-                        <a href="{% url 'ResList' %}" class="btn btn-primary">Ver Reservas</a>
-                    </div>
-                    <div class="card-footer">
-                        <a href="{% url 'ResForm' %}" class="btn btn-success">Agregar Reserva</a>
-                        <a href="#" class="btn btn-danger">Eliminar Reserva</a>
+                        <a href="{% url 'ResList' %}" class="btn btn-primary mb-2">Ver Reservas</a>
+                        <a href="{% url 'ResForm' %}" class="btn btn-success mb-2">Crear Alojamientos</a>
                     </div>
                 </div>
             </div>

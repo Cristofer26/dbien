@@ -4,10 +4,6 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-django = "*"
-pylint = "*"
-pylint-django = "*"
-pylint-celery = "*"
 
 [dev-packages]
 
